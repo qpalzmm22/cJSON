@@ -72,10 +72,20 @@ static void parse_string_should_parse_utf16_surrogate_pairs(void)
     assert_parse_string("\"\\uD83D\\udc31\"", "🐱");
 }
 
+static void parse_string_shoule_free_utf16_surrogate_fails(void)
+{
+    TEST_ASSERT_NULL(parse_string(item, (const unsigned char*) "\"\\uDC00\"", &error_pointer));
+    cJSON_free(item->valuestring);
+    item->valuestring = NULL;
+}
 static void parse_string_should_not_parse_non_strings(void)
 {
     TEST_ASSERT_NULL(parse_string(item, (const unsigned char*)"this\" is not a string\"", &error_pointer));
+    cJSON_free(item->valuestring);
+    item->valuestring = NULL;
     TEST_ASSERT_NULL(parse_string(item, (const unsigned char*) "", &error_pointer));
+    cJSON_free(item->valuestring);
+    item->valuestring = NULL;
 }
 
 static void parse_string_should_not_parse_invalid_backslash(void)
@@ -107,5 +117,6 @@ int main(void)
     RUN_TEST(parse_string_should_not_parse_invalid_backslash);
     RUN_TEST(parse_string_should_parse_bug_94);
     RUN_TEST(parse_string_should_not_overflow_with_closing_backslash);
+    RUN_TEST(parse_string_shoule_free_utf16_surrogate_fails);
     return UNITY_END();
 }

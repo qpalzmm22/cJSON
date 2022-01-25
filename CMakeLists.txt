@@ -76,7 +76,7 @@ set(version "${PROJECT_VERSION}")
 set(includedir "${CMAKE_INSTALL_INCLUDEDIR}")
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
-option(ENABLE_TARGET_EXPORT "Enable exporting of CMake targets. Disable when it causes problems!" ON)
+option(NABLE_TARGET_EXPORT "Enable exporting of CMake targets. Disable when it causes problems!" ON)
 
 #cJSON
 set(CJSON_LIB cjson)

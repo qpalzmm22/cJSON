@@ -33,5 +33,7 @@ notifications:
   slack:
     rooms:
       - 'handong-crew:n9k0NIiPB6e5Alzs33VhZ6MI#travis-practice'
+    template:
+    - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
     on_success: never
     on_failure: always

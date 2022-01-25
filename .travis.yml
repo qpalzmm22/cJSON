@@ -27,9 +27,11 @@ script:
   - make
   - make test CTEST_OUTPUT_ON_FAILURE=On
 notifications:
-  email:
-    - qpalzmm22@gmail.com
+  #email:
+  #- qpalzmm22@gmail.com
     #notifications:
-    #slack: 'handong-crew:n9k0NIiPB6e5Alzs33VhZ6MI#travis-practice'
-    #on_success: never
-    #on_failure: always
+  slack:
+    rooms:
+      - 'handong-crew:n9k0NIiPB6e5Alzs33VhZ6MI#travis-practice'
+    on_success: never
+    on_failure: always

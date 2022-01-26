@@ -1,6 +1,10 @@
 dist: trusty
 sudo: false
 language: c
+branches:
+  only:
+    - master
+    - hotfix
 env:
   matrix:
     - VALGRIND=On SANITIZERS=Off
